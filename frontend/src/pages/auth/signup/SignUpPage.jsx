@@ -21,7 +21,7 @@ const SignUpPage = () => {
    
     const queryClinet = useQueryClient();
 
-	const { mutate, isLoading, isError, error } = useMutation({
+	const { mutate, isPending, isError, error } = useMutation({
 		mutationFn: async({ email, username, fullName, password }) => {
 			try {
 				const response = await fetch("/api/auth/signup", {
@@ -120,7 +120,7 @@ const SignUpPage = () => {
 						/>
 					</label>
 					<button className='btn rounded-full btn-primary text-white'>
-						{isLoading ? (
+						{isPending ? (
 							"Loading..."
 						) : "Sign up"}
 					</button>

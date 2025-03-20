@@ -54,10 +54,11 @@ const CreatePost = () => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+     
       reader.onloadend = () => {
         setImg(reader.result); // 把 File 转换成 Base64 字符串
       };
+	  reader.readAsDataURL(file);
     }
   };
   
