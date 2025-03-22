@@ -46,7 +46,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={authUser ? <HomePage /> : <Navigate to="/login" />}
+          element={authUser ? <HomePage authUser={authUser} /> : <Navigate to="/login" />}
         />
         <Route
           path="/signup"
@@ -61,10 +61,15 @@ function App() {
           element={authUser ? <NotificationsPage /> : <Navigate to="/login" />}
         />
         <Route
-  path="/profile/:username"
-  element={authUser ? <ProfilePage authUser={authUser} /> : <Navigate to="/login" />}
-/>
-
+          path="/profile/:username"
+          element={
+            authUser ? (
+              <ProfilePage authUser={authUser} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
       {authUser && <RightPanel />}
       <Toaster />
